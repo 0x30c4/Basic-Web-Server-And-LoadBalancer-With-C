@@ -1,0 +1,6 @@
+
+# TODO: Implement a basic web server.
+	* Will support GET requests only. [In Progress]
+	* Serves Files.
+	* Will read mime type from a file.
+	* Setup tests.
