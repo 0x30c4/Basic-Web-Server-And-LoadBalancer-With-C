@@ -8,19 +8,15 @@ CC=gcc
 CFLAGS=-Wall -O2 -c 
 
 # `src` is the directory where all the .c files are.
-SRC=src
+SRC=../src
 
 # `include` is the directory where all the .h files are
-INCLUDE=include
+INCLUDE=../include
 
 # `bin` is the directory where the final maze executable will be.
-BIN=bin
-
-# This is the executable file name.
-EXE_PROD=server.prod
-EXE_DEV=server.dev
-
-OBJ=obj
+BIN=../bin
+OBJ=../obj
+TEST_SOURCE=test_source
 
 all: dev
 
@@ -30,11 +26,11 @@ all: dev
 %.o: $(SRC)/%.c
 	$(CC) $(STD) $(CFLAGS) -I$(INCLUDE) $^ -o $(OBJ)/$@
 
-prod: main.o error.o 
-	$(CC) $(OBJ)/main.o $(OBJ)/error.o -o $(BIN)/$(EXE_PROD)
+%.to: $(TEST_SOURCE)/%.c
+	$(CC) $(STD) $(CFLAGS) -I$(INCLUDE) $^ -o $(OBJ)/$@
 
-dev: main.o error.o 
-	$(CC) $(OBJ)/main.o $(OBJ)/error.o -o $(BIN)/$(EXE_DEV)
+test_get: get.to get.o file.o
+	$(CC) $(OBJ)/get.to $(OBJ)/get.o $(OBJ)/file.o -o $(BIN)/get.dev
 
 # Cleans only the .o files for a clean build 
 clean_obj: 

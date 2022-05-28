@@ -3,6 +3,7 @@
 
 #include "common.h"
 
-bool check_if_file_exists(char *);
+bool check_if_file_exists(const char *);
+void read_and_write_fd(int fd_read, int fd_write, size_t buff_size);
 
 #endif
