@@ -162,8 +162,9 @@ Request *parse_request(const char *raw, MimeType mimes[], size_t mime_len) {
 
 	// Check if the resource is available.
 
-    if (strlen(req->url) == 0)
+    if (strlen(req->url) == 0){
         memcpy(req->url, "index.html\0", 11);
+    }
 
 	req->http_code = check_resource(req->url);
 

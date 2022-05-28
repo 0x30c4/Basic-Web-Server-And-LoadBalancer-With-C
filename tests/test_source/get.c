@@ -15,7 +15,13 @@ int main(int argc, char *argv[]){
     /* } */
 
 	// Test the parse_request.
-    char *raw_request = "GET /?fbclick=11 HTTP/1.1\r\n";
+    // And test read file.
+
+    int fd_read = open("HTTP_HEADER.txt", O_RDONLY);
+
+    char *raw_request = read_header_fd(fd_read);
+
+    close(fd_read);
 
     struct Request *req = parse_request(raw_request, mimes, mime_len);
     if (req) {
@@ -41,6 +47,7 @@ int main(int argc, char *argv[]){
 
 		printf("\n\n");
     }
+    free(raw_request);
     free_request(req);
     free_mime(mimes, mime_len);
 
@@ -61,13 +68,5 @@ int main(int argc, char *argv[]){
 		printf("aad./. | is not valid.\n");
 
     printf("\n\n\n\n");
-    // Test read file.
-
-    int fd_read = open("HTTP_HEADER.txt", O_RDONLY);
-
-    read_and_write_fd(fd_read, 1, 1);
-
-    close(fd_read);
-
 	return 0;
 }
