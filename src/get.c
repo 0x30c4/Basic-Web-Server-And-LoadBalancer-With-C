@@ -40,7 +40,6 @@ int check_resource(const char * path) {
 	return OK;
 }
 
-
 /*
  * Function: mime_type
  * ----------------------------

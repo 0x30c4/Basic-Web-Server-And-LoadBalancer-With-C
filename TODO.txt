@@ -1,12 +1,16 @@
 
-# TODO: Implement a basic web server.
-	* Will support only GET requests only. [In Progress]
-		-Status codes
-		–200_OK
-		-400_BAD_REQUEST
-		–403_FORBIDDEN
-		–404_NOT_FOUND
-		–500_INTERNAL_SERVER_ERROR
-	* Serves Files.
-	* Will read mime type from a file.
-	* Setup tests and documentation.
+# TODO: Implement a basic web server with epoll.
+	* Will support only GET requests only. [Done]
+		-Status codes [Done]
+		–200_OK [Done]
+		-400_BAD_REQUEST [Done]
+		–403_FORBIDDEN [Done]
+		–404_NOT_FOUND [Done]
+		–500_INTERNAL_SERVER_ERRO [Done]
+	* Serves Files. [Done]
+	* Will read mime type from a file. [Done]
+    * Epoll I/O multiplexing. [Done]
+	* Setup tests and documentation. [In Progress]
+
+# TODO: Implement loadbalencer functionality.
+    *

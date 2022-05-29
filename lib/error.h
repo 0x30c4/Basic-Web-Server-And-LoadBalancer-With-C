@@ -9,4 +9,6 @@
 #define FORBIDDEN 403
 #define INTERNAL_SERVER_ERROR 500
 
+int check(int, const char *);
+
 #endif

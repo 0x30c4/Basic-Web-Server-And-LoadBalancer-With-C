@@ -1,6 +1,7 @@
 #include <common.h>
 #include <get.h>
 #include <file.h>
+#include <serve.h>
 
 int main(int argc, char *argv[]){
 
@@ -10,24 +11,30 @@ int main(int argc, char *argv[]){
     size_t mime_len = 0;
     mime_type("../mime.types", mimes, &mime_len);
 
-    /* for (int i = 0; i < mime_len; i++){ */
-    /*     printf("%s | %s", mimes[i].header, mimes[i].extension); */
-    /* } */
-
 	// Test the parse_request.
     // And test read file.
 
     int fd_read = open("HTTP_HEADER.txt", O_RDONLY);
 
-    char *raw_request = read_header_fd(fd_read);
+    Global data;
+
+    data.mimes = mimes;
+    data.mime_len = mime_len;
+
+    serve_fd(fd_read, 1, &data);
+    /* serve_fd(0, 1, &data); */
+
+    /* char *raw_request = read_header_fd(fd_read); */
 
     close(fd_read);
 
-    struct Request *req = parse_request(raw_request, mimes, mime_len);
+    /* exit(0); */
+
+    Request *req = parse_request("GET /Makefile HTTP/1.1\r\n", mimes, mime_len);
     if (req) {
-        printf("Method: %d\n", req->method);
-        printf("Request-URI: %s\n", req->url);
-        printf("HTTP-Version: %s\n", req->version);
+        printf("method: %d\n", req->method);
+        printf("request-uri: %s\n", req->url);
+        printf("http-version: %s\n", req->version);
         printf("Content-Type: %s\n", req->type);
 
 		if (req->http_code == OK)
@@ -47,7 +54,6 @@ int main(int argc, char *argv[]){
 
 		printf("\n\n");
     }
-    free(raw_request);
     free_request(req);
     free_mime(mimes, mime_len);
 

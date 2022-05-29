@@ -82,3 +82,22 @@ char *read_header_fd(int fd_read) {
 
     return req;
 }
+
+/*
+ * Function: check_resource
+ * ----------------------------
+ *   Checks the content length.
+ *
+ *   path: the length of the content
+ *
+ *   returns: size_t
+ */
+
+size_t content_len(const char * path) {
+
+    struct stat st;
+    stat(path, &st);
+
+    return st.st_size;
+}
+

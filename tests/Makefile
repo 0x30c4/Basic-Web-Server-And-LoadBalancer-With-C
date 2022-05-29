@@ -11,7 +11,7 @@ CFLAGS=-Wall -O2 -c
 SRC=../src
 
 # `include` is the directory where all the .h files are
-INCLUDE=../include
+INCLUDE=../lib
 
 # `bin` is the directory where the final maze executable will be.
 BIN=../bin
@@ -29,8 +29,12 @@ all: dev
 %.to: $(TEST_SOURCE)/%.c
 	$(CC) $(STD) $(CFLAGS) -I$(INCLUDE) $^ -o $(OBJ)/$@
 
-test_get: get.to get.o file.o
-	$(CC) $(OBJ)/get.to $(OBJ)/get.o $(OBJ)/file.o -o $(BIN)/get.dev
+test_get: get.to get.o file.o serve.o
+	$(CC) $(OBJ)/get.to $(OBJ)/get.o $(OBJ)/file.o $(OBJ)/serve.o -o $(BIN)/get.dev
+
+
+test_server: server.to get.o file.o serve.o server.o
+	$(CC) $(OBJ)/server.to $(OBJ)/get.o $(OBJ)/file.o $(OBJ)/serve.o $(OBJ)/server.o -o $(BIN)/server.t.dev
 
 # Cleans only the .o files for a clean build 
 clean_obj: 
