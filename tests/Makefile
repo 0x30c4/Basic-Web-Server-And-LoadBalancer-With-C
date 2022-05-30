@@ -32,9 +32,11 @@ all: dev
 test_get: get.to get.o file.o serve.o
 	$(CC) $(OBJ)/get.to $(OBJ)/get.o $(OBJ)/file.o $(OBJ)/serve.o -o $(BIN)/get.dev
 
-
 test_server: server.to get.o file.o serve.o server.o
 	$(CC) $(OBJ)/server.to $(OBJ)/get.o $(OBJ)/file.o $(OBJ)/serve.o $(OBJ)/server.o -o $(BIN)/server.t.dev
+
+test_proxy: proxy.to get.o file.o serve.o server.o proxy.o
+	$(CC) $(OBJ)/proxy.to $(OBJ)/get.o $(OBJ)/file.o $(OBJ)/serve.o $(OBJ)/proxy.o $(OBJ)/server.o -o $(BIN)/proxy.dev
 
 # Cleans only the .o files for a clean build 
 clean_obj: 
