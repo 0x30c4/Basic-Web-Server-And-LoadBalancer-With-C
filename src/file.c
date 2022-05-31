@@ -40,11 +40,13 @@ bool check_if_file_exists(const char *file_name){
 void read_and_write_fd(int fd_read, int fd_write, size_t buff_size) {
 
     char buff[1];
+    int r = 1, w = 1;
     
-    while ((read(fd_read, buff, buff_size)))
-        write(fd_write, buff, buff_size);
-
+    while ((r = read(fd_read, buff, buff_size)) && w) {
+        w = write(fd_write, buff, buff_size);
+    }
 }
+
 
 /*
  * Function: read_header_fd 

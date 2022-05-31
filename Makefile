@@ -11,18 +11,17 @@ CFLAGS=-Wall -O2 -c
 SRC=src
 
 # `include` is the directory where all the .h files are
-INCLUDE=include
+INCLUDE=lib
 
 # `bin` is the directory where the final maze executable will be.
 BIN=bin
 
 # This is the executable file name.
-EXE_PROD=server.prod
-EXE_DEV=server.dev
+EXE=server.prod
 
 OBJ=obj
 
-all: dev
+all: build
 
 # Using wild card to create object file at once 
 # Using -I to add the header files in `include` directory
@@ -30,11 +29,8 @@ all: dev
 %.o: $(SRC)/%.c
 	$(CC) $(STD) $(CFLAGS) -I$(INCLUDE) $^ -o $(OBJ)/$@
 
-prod: main.o error.o 
-	$(CC) $(OBJ)/main.o $(OBJ)/error.o -o $(BIN)/$(EXE_PROD)
-
-dev: main.o error.o 
-	$(CC) $(OBJ)/main.o $(OBJ)/error.o -o $(BIN)/$(EXE_DEV)
+build: main.o error.o get.o server.o serve.o proxy.o file.o
+	$(CC) $(OBJ)/main.o $(OBJ)/error.o $(OBJ)/get.o $(OBJ)/server.o $(OBJ)/serve.o $(OBJ)/proxy.o $(OBJ)/file.o -o $(BIN)/$(EXE)
 
 # Cleans only the .o files for a clean build 
 clean_obj: 

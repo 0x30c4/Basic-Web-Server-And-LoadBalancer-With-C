@@ -56,6 +56,19 @@ typedef struct Global {
     int mime_len;
 } Global;
 
+typedef struct Backend {
+    char *address;
+    int port;
+} Backend;
+
+typedef struct Conf {
+    int backends_len;
+    char *mime_file;
+    int listen_port; 
+    char *www_path;
+} Conf;
+
+
 #define OK_H "200 OK\0"
 #define BAD_REQ_H "400 Bad Request\0"
 #define FORBIDDEN_H "403 Forbidden\0"
@@ -82,5 +95,14 @@ typedef struct Global {
 #define CRLF "\r\n"
 
 #define SERVER_NAME "BigPP/beta-0.2"
+
+#define ROUND_ROBIN 0
+#define LEAST_CONN 1
+#define STATIC_SERVER 2
+#define MAX_BACKENDS 10
+
+
+#define BUFSIZE 1024 
+
 
 #endif

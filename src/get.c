@@ -70,17 +70,18 @@ void mime_type(char *path, MimeType mimes[], size_t *mime_len) {
         /* printf("Retrieved line of length %zu:\n", read); */
         if (read != 1) {
             // get the content type.
+
             size_t con_type = strcspn(line, " ");
             mimes->header = malloc(con_type + 1);
             memcpy(mimes->header, line, con_type);
             mimes->header[con_type] = '\0';
-
 
             size_t con_ext = strcspn(line, ";");
             mimes->extension = malloc(con_ext + 1);
             memcpy(mimes->extension, line + con_type + 1, con_ext);
             mimes->extension[con_type] = '\0';
 
+            /* printf("%s -> %s\n", mimes->header, mimes->extension); */
             // Increment the value of mime_len.
             (*mime_len)++;
             mimes++;
@@ -171,7 +172,7 @@ Request *parse_request(const char *raw, MimeType mimes[], size_t mime_len) {
     // By default the content type is text/plain
     req->type = malloc(128);
     memset(req->type, 0, 128);
-    memcpy(req->type, "text/plain\0", 10);
+    memcpy(req->type, "text/html\0", 10);
     char *token;
     if (req->http_code == OK && (token = strrchr(req->url, '.')) != NULL) {
         token++;

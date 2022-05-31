@@ -16,7 +16,7 @@ int main(int argc, char const *argv[]) {
     backend[0].port = 1111;
     backend[1].port = 2222;
 
-    epoll_driver(2121, backend, backend_len);
+    epoll_driver(2121, backend, backend_len, ROUND_ROBIN);
 
     return 0;
 }
