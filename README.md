@@ -24,10 +24,10 @@ $ make
 
 There are to modes the server can run. 
 
-### Static Server.
-### Reverse Proxy and LoadBalancer.
-
 #### Static Server.
+#### Reverse Proxy and LoadBalancer.
+
+### Static Server.
 First the static web server mode. For that you need to setup a conf file like this.
 
 ```
@@ -58,7 +58,7 @@ To run the server run.
 ./bin/server ./server.conf
 ```
 
-#### Reverse Proxy and LoadBalancer.
+### Reverse Proxy and LoadBalancer.
 
 Everything is almost like the static server but you need to add your backends like this
 
