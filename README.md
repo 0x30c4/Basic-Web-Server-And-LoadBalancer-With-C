@@ -82,3 +82,16 @@ To run the server run.
 ```
 ./bin/server ./server.conf
 ```
+
+# Error Handling.
+By default the server will try to load error file from the ```www_path/error``` path
+
+
+# Docker
+
+To run docker container just run.
+
+```
+$ docker-compose up
+```
+This will automatically build and run the server in a container.
