@@ -10,7 +10,7 @@
 	* Serves Files. [Done]
 	* Will read mime type from a file. [Done]
     * Epoll I/O multiplexing. [Done]
-	* Setup tests and documentation. [In Progress]
+	* Setup tests and documentation. [Done]
 
 # TODO: Implement loadbalencer functionality.
     * Reverse Proxy [Done]
