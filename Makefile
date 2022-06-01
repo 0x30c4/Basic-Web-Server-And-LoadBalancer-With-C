@@ -5,7 +5,7 @@ CC=gcc
 
 # -Wall enables all the warning about constructions.
 # -O2 is for level 2 optimization which reduce the execution time.
-CFLAGS=-Wall -O2 -c 
+CFLAGS=-Wall  -c 
 
 # `src` is the directory where all the .c files are.
 SRC=src

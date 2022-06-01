@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+    server:
+        image: server_cont_prod
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: server.prod
+        restart: always
+        working_dir: /app
+        command: sh -c "cd /app;make;/app/bin/server.prod"
+        ports:
+            - "3344:3344"

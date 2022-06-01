@@ -13,4 +13,7 @@
 	* Setup tests and documentation. [In Progress]
 
 # TODO: Implement loadbalencer functionality.
-    *
+    * Reverse Proxy [Done]
+    * Loadbalencer [Done]
+
+# TODO: Dockerize the application. [Done]
