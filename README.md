@@ -23,6 +23,11 @@ $ make
 # Run
 
 There are to modes the server can run. 
+
+### Static Server.
+### Reverse Proxy and LoadBalancer.
+
+#### Static Server.
 First the static web server mode. For that you need to setup a conf file like this.
 
 ```
@@ -47,3 +52,33 @@ application/rss+xml rss;
 ```
 As you can see the file contains ```Content-Type``` header and the corresponding file extension.
 
+To run the server run.
+
+```
+./bin/server ./server.conf
+```
+
+#### Reverse Proxy and LoadBalancer.
+
+Everything is almost like the static server but you need to add your backends like this
+
+```
+www_path: ./tests/test_files;
+listen_port: 3344;
+mime_file: ./mime.types;
+
+backends_1: api_1.prod.local.net:8080;
+backends_2: api_2.prod.local.net:8080;
+backends_3: api_3.prod.local.net:8080;
+```
+
+```backends_*``` is for specifying the backend with a ```host:port``` syntax.
+You can specify at most 10 backends.
+
+And by default the server will loadbalance with the Round Robin.
+
+To run the server run.
+
+```
+./bin/server ./server.conf
+```
