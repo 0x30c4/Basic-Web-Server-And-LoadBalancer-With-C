@@ -1,5 +1,5 @@
 # A simple Web Server and Loadbalancer.
-## Inspired by nignx.
+Inspired by Nignx.
 
 # Prerequisite
 
