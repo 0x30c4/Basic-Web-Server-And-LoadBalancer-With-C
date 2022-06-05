@@ -1,5 +1,5 @@
 
-# Makefile for the maze game.
+# Makefile for the server.
 
 CC=gcc
 
