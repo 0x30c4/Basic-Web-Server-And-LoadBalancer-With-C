@@ -37,7 +37,7 @@ int create_socket(int port) {
         perror("listenResult");
         exit(-1);
     }
-    printf("Server Started\n");
+    printf("Server started listening on 0.0.0.0:%d\n", port);
     return server_socket;
 }
 
